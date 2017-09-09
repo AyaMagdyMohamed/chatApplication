@@ -1,0 +1,18 @@
+<%include ../layout/header %>
+
+<form action="/login" method="post" onsubmit="myFunction()" name="myForm"> 
+  Email <input type="text" name="email" value="" id=user_email><br>
+  Password <input type="password" name="password" value=""><br>
+  <input type="submit" name="" value="Login">
+</form>
+<script>
+    function myFunction(){
+
+    //  alert("inside function")
+      var x = document.forms["myForm"]["email"].value;
+      var socket = io.connect();
+      socket.emit('login',{userId:x});
+    }
+    
+ </script>
+<%include ../layout/footer %>

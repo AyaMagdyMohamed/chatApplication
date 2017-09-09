@@ -1,0 +1,86 @@
+<html>
+    
+    <head>
+    
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    
+        <script src="/socket.io/socket.io.js"></script>
+    
+        <script>
+    
+            $(function(){
+    
+                var iosocket = io.connect();
+                var users=[];
+                iosocket.on('users', function (data) {
+                    $('#onlineusers').empty();
+                  
+                    // var btn = document.createElement("BUTTON");
+                    // var t = document.createTextNode("CLICK ME");
+                    // btn.appendChild(t);
+                    // $('#onlineusers').append($('<li></li>').text(data)).append(btn)
+                    // document.body.appendChild(btn);
+
+    
+                    // $('#incomingChatMessages').append($('<li>Connected</li>'));
+    
+                    // iosocket.on('message', function(message) {
+                      console.log("hhhhhhhh")
+                      console.log(data)
+                        for (i in data)
+                           { 
+                            if (data[i]=="")
+                              continue
+                            //    console.log(i)
+                            //    console.log(data[i])
+                            // debugger
+                            // console.log(users.indexOf(data[i]))
+                            console.log(data[i])
+                            // $('#onlineusers').append($('<li></li>').text(data[i]))
+                            var btn = document.createElement("BUTTON");
+                              var t = document.createTextNode("CLICK ME");
+                             btn.appendChild(t);
+                              $('#onlineusers').append($('<li></li>').text(data[i])).append(btn) 
+                            
+                           }
+                        //     if(data[i]!=""){
+                        //         // users.push(data[i]) 
+                        //      $('#onlineusers').append($('<li></li>').text(data[i]));
+                        //     }
+                        //     // else
+                        //     // {
+                            
+                        //     // } 
+                        //    }
+                        //    console.log("users",users)
+
+                        //    for(i=0;i<users.length;i++)
+                        //    {
+                        //     $('#onlineusers').append($('<li></li>').text(users[i]));
+                        //    }
+    
+                    });
+    
+                
+    
+                });
+    
+              
+    
+      
+    
+        </script>
+    
+    </head>
+    
+    <body>
+    
+    online users: <ul id="onlineusers"></ul>
+    
+    <br />
+    
+    <!-- <input type="text" id="outgoingChatMessage"> -->
+    
+    </body>
+    
+    </html>
